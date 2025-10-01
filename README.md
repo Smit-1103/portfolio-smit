@@ -4,7 +4,7 @@ Personal portfolio website showcasing my work in data engineering, analytics, an
 
 ## 🚀 Live Site
 
-[smit-patel.dev](https://smit-patel.dev) _(replace with your actual domain)_
+[smit-patel.dev]([https://smit-patel.dev](https://smit-1103.github.io/portfolio-smit/))
 
 ## 🛠 Built With
 
@@ -53,4 +53,4 @@ portfolio-smit-2025/
 
 ---
 
-**© 2025 Smit Patel** — Built with ❤️ and lots of ☕
+**© 2025 Smit Patel**
