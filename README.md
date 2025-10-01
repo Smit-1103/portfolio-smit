@@ -2,10 +2,6 @@
 
 Personal portfolio website showcasing my work in data engineering, analytics, and software development.
 
-## 🚀 Live Site
-
-[smit-patel.dev]([https://smit-patel.dev](https://smit-1103.github.io/portfolio-smit/))
-
 ## 🛠 Built With
 
 - **HTML5** & **CSS3** with modern glassmorphism design
