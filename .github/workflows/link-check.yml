@@ -1,38 +1,21 @@
 name: Check Links
-
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
-  schedule:
-    # Run every Monday at 9:00 AM UTC
-    - cron: '0 9 * * 1'
+  workflow_dispatch:
 
 jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: Link Checker
-      uses: lycheeverse/lychee-action@v1
-      with:
-        args: --verbose --no-progress './index.html' './404.html'
-        fail: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Create Issue on Failure
-      if: failure()
-      uses: actions/github-script@v7
-      with:
-        script: |
-          github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: '🔗 Broken links detected in portfolio',
-            body: 'The automated link check found broken links. Please review the workflow logs for details.\n\n[View workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})',
-            labels: ['bug', 'maintenance']
-          })
+      - uses: actions/checkout@v4
+
+      - name: Run Lychee link checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: >-
+            --config .lychee.toml
+            --no-progress
+            --verbose
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,19 @@
+# .lychee.toml
+# What to scan
+glob = ["**/*.html", "**/*.md"]
+
+# Ignore noisy/blocked targets
+exclude = [
+  "linkedin.com", "www.linkedin.com",
+  "x.com", "twitter.com", "instagram.com",
+  "fonts.googleapis.com", "fonts.gstatic.com",
+  "mailto:*", "tel:*"
+]
+
+# Be tolerant of redirects / rate limits
+accept = ["200", "206", "301", "302", "308", "429"]
+
+# Make the checker a bit friendlier/slower for externals
+timeout = 20
+max_redirects = 10
+user_agent = "Mozilla/5.0 (compatible; Lychee/0.13; +https://github.com/lycheeverse/lychee)"
