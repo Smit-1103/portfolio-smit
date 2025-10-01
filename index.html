@@ -1,0 +1,2471 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Smit Patel — Portfolio</title>
+    <meta name="description" content="Smit Patel — data pipelines, analytics, dashboards, and cloud.">
+    <link rel="canonical" href="https://smit-patel-portfolio.github.io/">
+    <meta name="robots" content="index,follow">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <meta name="theme-color" id="meta-theme-color" content="#0ea5e9">
+    <meta property="og:title" content="Smit Patel — Data Analyst / Data Engineer">
+    <meta property="og:description" content="SQL, Python, Power BI, AWS. 40% faster reporting cycles, $15k/yr license savings, multi‑region recruitment analytics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smit-patel-portfolio.github.io/">
+    <meta property="og:image" content="https://smit-patel-portfolio.github.io/assets/img/smit.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://smit-patel-portfolio.github.io/assets/img/smit.jpg">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <meta name="color-scheme" content="dark light">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Source+Code+Pro:wght@400;500&amp;display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+/* ---------- Glass design tokens ---------- */
+:root{
+  --glass-bg: 255 255 255;         /* base white in RGB */
+  --glass-alpha: .08;              /* card background transparency - much more transparent */
+  --glass-blur: 14px;              /* blur strength */
+  --glass-sat: 140%;               /* saturation boost */
+  --glass-ring: 0 0 0 1px rgba(255,255,255,.25);   /* inner stroke */
+  --glass-border: rgba(255,255,255,.25);
+  --glass-shadow: 0 10px 30px rgba(15,23,42,.08);
+  --glass-highlight: linear-gradient( to bottom, rgba(255,255,255,.3), rgba(255,255,255,0) );
+  --accent: #0ea5e9;
+}
+
+/* Text sharpening for better readability on glass */
+body, .glass-card, .glass-nav {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enhanced text contrast on glass backgrounds */
+.glass-card h1, .glass-card h2, .glass-card h3, .glass-card h4, .glass-card h5, .glass-card h6 {
+  color: #0f172a; /* Darker for better contrast */
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+
+.glass-card p, .glass-card li {
+  color: #1e293b; /* Slightly darker body text */
+}
+
+/* Reduce cost on mobile */
+@media (max-width: 640px){
+  :root{ --glass-blur: 12px; --glass-alpha: .22; }
+}
+
+/* Respect accessibility setting */
+@media (prefers-reduced-transparency: reduce){
+  :root{ --glass-alpha: .9; --glass-blur: 0px; --glass-sat: 100%; }
+}
+
+/* Layering for particles -> content -> glass strokes */
+.bg-layer     { position: relative; z-index: 0; }
+.bg-layer > * { position: relative; z-index: 1; }
+
+/* ---------- Glass primitives ---------- */
+.glass{
+  background: rgba(var(--glass-bg), var(--glass-alpha));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+}
+
+/* Uniform corner and subtle inner highlight */
+.glass-rounded{
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.glass-rounded::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  background: var(--glass-highlight);
+  opacity:.7;
+}
+
+/* Card = glass + spacing; replaces "border bg-white …" */
+.glass-card{ 
+  background: rgba(var(--glass-bg), var(--glass-alpha));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  background: var(--glass-highlight);
+  opacity:.6;
+}
+
+/* Nav and footer slightly denser */
+.glass-nav{
+  background: rgba(var(--glass-bg), .6);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,.35);
+}
+
+/* Buttons */
+.btn{ display:inline-flex; align-items:center; gap:.5rem; border-radius:12px; padding:.6rem .9rem; font-weight:500; transition:transform .15s ease, box-shadow .2s ease, filter .2s ease; }
+.btn:focus{ outline:3px solid var(--accent); outline-offset:2px; }
+.btn:active{ transform:translateY(1px); }
+
+/* Primary = vibrant glass pill */
+.btn-primary{
+  background: rgba(14,165,233,.25);
+  color:#0b3a4a;
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border:1px solid rgba(14,165,233,.55);
+  box-shadow: 0 6px 20px rgba(14,165,233,.25);
+}
+.btn-primary:hover{ filter:brightness(.97); }
+
+/* Outline = frosted neutral */
+.btn-outline{
+  background: rgba(255, 255, 255, 0.18);
+  color:#0f172a;
+  border:1px solid rgba(255,255,255,.45);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+}
+.btn-outline:hover{ box-shadow: 0 8px 12px rgba(15,23,42,.12); }
+
+.btn-ghost{background:transparent;color:#111;border-color:transparent}
+
+/* Chips/badges */
+.badge{
+  display:inline-flex; align-items:center; gap:.25rem;
+  padding:.25rem .5rem; font-size:.75rem; border-radius:.6rem;
+  background: rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.45);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+
+/* Avatar styling - no solid ring, just floating animation */
+.avatar{ width:96px;height:96px;border-radius:9999px; object-fit:cover; object-position:center; }
+.avatar-glass{ 
+  position:relative; 
+  display:inline-block; 
+  border-radius:9999px;
+  animation: avatar-float 6s ease-in-out infinite;
+}
+
+/* Floating animation for avatar */
+@keyframes avatar-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(1deg); }
+  50% { transform: translateY(-9px) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-1deg); }
+}
+
+/* Resume iframe container */
+.glass-frame{ 
+  background: rgba(var(--glass-bg), var(--glass-alpha));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  padding: .5rem; 
+}
+
+@media (min-width:1024px){.avatar{width:144px;height:144px}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media print{nav,footer,.no-print{display:none!important} iframe{height:100vh!important}}
+
+/* More transparent glass variant for skills section */
+.glass-card-ultra{ 
+  background: rgba(var(--glass-bg), .08);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card-ultra::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  background: var(--glass-highlight);
+  opacity:.8;
+}
+
+/* Background vignette overlay */
+.bg-layer::after{
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(1200px 800px at 50% -10%, rgba(255,255,255,.35), transparent 60%),
+    radial-gradient(800px 600px at 100% 0%, rgba(255,255,255,.25), transparent 60%),
+    radial-gradient(1400px 900px at -10% 100%, rgba(14,165,233,.08), transparent 60%);
+}
+
+/* Fallback when backdrop-filter not supported */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)){
+  .glass, .glass-card, .glass-nav, .btn-primary, .btn-outline { background: #ffffff; }
+}
+
+/* Floating animations for chips */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(0.5deg); }
+  50% { transform: translateY(-6px) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-0.5deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(4px) rotate(-0.5deg); }
+  50% { transform: translateY(8px) rotate(0deg); }
+  75% { transform: translateY(4px) rotate(0.5deg); }
+}
+
+@keyframes float-drift {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  33% { transform: translateY(-4px) translateX(2px) rotate(0.3deg); }
+  66% { transform: translateY(2px) translateX(-1px) rotate(-0.3deg); }
+}
+
+/* Apply floating animations to chips */
+.chip-float-1 {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.chip-float-2 {
+  animation: float-reverse 5s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+.chip-float-3 {
+  animation: float-drift 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .chip-float-1, .chip-float-2, .chip-float-3 {
+    animation: none;
+  }
+}
+
+/* ---------- NEON GLOW UTILITIES ---------- */
+:root{
+  /* palette used for glows */
+  --glow-blue:  99 102 241;   /* indigo 500 */
+  --glow-cyan:  34 211 238;   /* cyan 400   */
+  --glow-pink:  244 114 182;  /* pink 400   */
+  --glow-amber: 251 191 36;   /* amber 400  */
+  --glow-lime:  132 204 22;   /* lime 500   */
+}
+
+/* Add to any card/section you want a subtle edge glow */
+.glass-glow{
+  position: relative;
+  isolation: isolate;                      /* keep glow behind content */
+}
+.glass-glow::before{
+  content:"";
+  position:absolute; inset:-2px; border-radius:inherit; z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(160px 120px at var(--gx,88%) var(--gy,22%),
+      rgb(var(--glow, var(--glow-blue)) / .40) 0%,
+      rgb(var(--glow, var(--glow-blue)) / .00) 70%);
+  filter: blur(14px);
+}
+
+/* Color shortcuts (apply as extra class) */
+.glow-blue  { --glow: var(--glow-blue);  }
+.glow-cyan  { --glow: var(--glow-cyan);  }
+.glow-pink  { --glow: var(--glow-pink);  }
+.glow-amber { --glow: var(--glow-amber); }
+.glow-lime  { --glow: var(--glow-lime);  }
+
+/* Floating background blobs: place once per section container */
+.neon-blobs{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+.neon-blobs .blob{
+  position:absolute; width:420px; height:320px; border-radius:50%;
+  filter: blur(40px) saturate(140%);
+  opacity:.35; mix-blend-mode:screen;
+  animation: blob-float 28s ease-in-out infinite;
+  background: radial-gradient(circle at 30% 30%,
+    rgb(var(--c1)/.65) 0%, rgb(var(--c2)/.00) 60%);
+}
+.neon-blobs .blob.b2{ animation-delay:-8s; }
+.neon-blobs .blob.b3{ animation-delay:-16s; }
+
+@keyframes blob-float{
+  0%,100%{ transform: translate(0,0) scale(1); }
+  50%    { transform: translate(24px,-18px) scale(1.06); }
+}
+
+/* helper to lift content above blobs */
+.layer-content{ position:relative; z-index:1; }
+
+/* enable color-variable animation in all modern engines */
+@property --accent { syntax: "<color>"; inherits: true; initial-value: #0ea5e9; }
+
+:root{
+  animation: accent-cycle 18s linear infinite;
+}
+
+@keyframes accent-cycle{
+  0%   { --accent:#60a5fa; }  /* blue */
+  25%  { --accent:#22d3ee; }  /* cyan */
+  50%  { --accent:#a78bfa; }  /* violet */
+  75%  { --accent:#f472b6; }  /* pink */
+  100% { --accent:#60a5fa; }
+}
+
+/* Avatar neon halo animations */
+@keyframes neon-rotate{
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes pulse-glow{
+  0%   { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(1.08); }
+}
+
+/* Social icon hover effects */
+.social-github:hover {
+  box-shadow: 0 0 20px rgba(75, 85, 99, 0.4), 0 0 40px rgba(75, 85, 99, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.social-linkedin:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.social-mail:hover {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 0 40px rgba(239, 68, 68, 0.3);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Header navigation hover effects */
+.nav-education:hover {
+  color: #1f2937 !important;
+  text-shadow: 0 0 15px rgba(34, 211, 238, 0.6), 0 0 30px rgba(34, 211, 238, 0.4);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.nav-projects:hover {
+  color: #1f2937 !important;
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.nav-experience:hover {
+  color: #1f2937 !important;
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.6), 0 0 30px rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.nav-resume:hover {
+  color: #1f2937 !important;
+  text-shadow: 0 0 15px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.4);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.nav-blog:hover {
+  color: #1f2937 !important;
+  text-shadow: 0 0 15px rgba(244, 114, 182, 0.6), 0 0 30px rgba(244, 114, 182, 0.4);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.nav-contact:hover {
+  color: #1f2937 !important;
+  text-shadow: 0 0 15px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+/* Enhanced SP logo hover effect */
+.logo-sp:hover .logo-badge {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(34, 211, 238, 0.9));
+  color: white;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
+  transform: scale(1.1) rotate(5deg);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Skills section animations */
+.skill-category {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category:hover .skill-icon {
+  animation: skill-icon-dance 0.6s ease-in-out;
+}
+
+.skill-category:hover .skill-chips .chip {
+  animation: chip-bounce 0.4s ease-in-out;
+}
+
+.skill-category:hover .skill-chips .chip:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.skill-category:hover .skill-chips .chip:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.skill-category:hover .skill-chips .chip:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.skill-category:hover .skill-chips .chip:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Programming specific - code animation */
+.skill-programming:hover .skill-icon {
+  animation: code-typing 0.8s ease-in-out;
+}
+
+/* Data & Analytics - chart animation */
+.skill-data:hover .skill-icon {
+  animation: chart-grow 0.7s ease-in-out;
+}
+
+/* Cloud - floating animation */
+.skill-cloud:hover .skill-icon {
+  animation: cloud-float 1s ease-in-out;
+}
+
+/* Database - pulse animation */
+.skill-database:hover .skill-icon {
+  animation: database-pulse 0.6s ease-in-out;
+}
+
+/* Security - shield animation */
+.skill-security:hover .skill-icon {
+  animation: shield-protect 0.8s ease-in-out;
+}
+
+@keyframes skill-icon-dance {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-5deg) scale(1.1); }
+  75% { transform: rotate(5deg) scale(1.1); }
+}
+
+@keyframes chip-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.05); }
+}
+
+@keyframes code-typing {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2) rotate(-5deg); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.2) rotate(5deg); }
+}
+
+@keyframes chart-grow {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.3) rotate(10deg); }
+}
+
+@keyframes cloud-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+
+@keyframes database-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.8; }
+}
+
+@keyframes shield-protect {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2) rotate(-10deg); }
+  75% { transform: scale(1.2) rotate(10deg); }
+}
+
+/* ===== SIGNALS & KPI ANIMATIONS ===== */
+
+/* Signal Card Animations - Smooth & Minimalistic */
+.signal-card {
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+}
+
+.signal-card:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.08);
+}
+
+.signal-card h3 {
+  transition: color 0.3s ease;
+}
+
+.signal-card:hover h3 {
+  color: var(--accent);
+}
+
+.signal-item {
+  transition: all 0.2s ease;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+.signal-card:hover .signal-item {
+  background: rgba(14, 165, 233, 0.04);
+  transform: translateX(2px);
+}
+
+/* KPI Card Animations - Consistent with signals */
+.kpi-card {
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.kpi-label {
+  transition: color 0.3s ease;
+}
+
+.kpi-card:hover .kpi-label {
+  color: var(--accent);
+}
+
+.kpi-value {
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover .kpi-value {
+  transform: scale(1.02);
+  color: var(--accent);
+}
+
+/* Minimal fade animation for metric cycling */
+@keyframes metric-fade-in {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Smooth scroll for browsers that support it */
+html { scroll-behavior: smooth; }
+
+/* Floating glass button */
+.to-top{
+  position: fixed;
+  right: clamp(14px, 1.8vw, 28px);
+  bottom: clamp(14px, 1.8vw, 28px);
+  z-index: 60;                     /* above cards, below menus */
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border-radius: 9999px;
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(255,255,255,.45);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.12),
+    inset 0 0 0 1px rgba(255,255,255,.2);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  color: #0f172a;                  /* slate-900 */
+  opacity: 0; transform: translateY(8px) scale(.9);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+/* neon ring */
+.to-top::before{
+  content:"";
+  position: absolute; inset:-2px;
+  border-radius: inherit;
+  background:
+    radial-gradient(60% 60% at 30% 30%, rgba(59,130,246,.35), transparent 70%),
+    radial-gradient(60% 60% at 70% 70%, rgba(168,85,247,.35), transparent 70%);
+  filter: blur(6px);
+  z-index:-1;
+}
+/* Icon sizing */
+.to-top i{ width:22px; height:22px; stroke-width:2.2px; }
+
+/* Hover / focus */
+.to-top:hover{ box-shadow:0 14px 36px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.3); }
+.to-top:focus-visible{ outline: 3px solid rgba(59,130,246,.45); outline-offset: 2px; }
+
+/* Visible state toggled by JS */
+.to-top.show{ opacity: 1; transform: translateY(0) scale(1); pointer-events:auto; }
+
+/* Lift when footer is visible so it doesn't overlap */
+.to-top.lift{ bottom: clamp(82px, 5vw, 110px); }
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .to-top{ transition: none; }
+}
+
+/* ===== PILL AUTO-CYCLING ANIMATIONS ===== */
+
+.metric-pill {
+  position: relative;
+  display: inline-block;
+  min-width: fit-content;
+  white-space: nowrap;
+}
+
+.metric-content {
+  position: relative;
+  display: inline-block;
+  perspective: 1000px;
+}
+
+.metric-front {
+  display: inline-block;
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.metric-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(180deg);
+  opacity: 0;
+  transition: all 0.4s ease;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  min-width: max-content;
+  padding: 0 4px;
+  pointer-events: none;
+}
+
+.metric-pill:hover .metric-front {
+  opacity: 0;
+  transform: rotateY(-180deg);
+}
+
+.metric-pill:hover .metric-back {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotateY(0deg);
+}
+
+.metric-text {
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-weight: 600;
+}
+
+@keyframes metric-fade-in {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.metric-text.changing {
+  animation: metric-fade-in 0.5s ease;
+}
+
+.metric-text.changing {
+  animation: metric-fade-in 0.3s ease;
+}
+
+/* ===== SECTION ANIMATIONS (Applied to all sections) ===== */
+
+/* Education Section Animations */
+.education-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.education-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.education-card:hover img {
+  animation: institution-badge 0.8s ease-in-out;
+}
+
+.education-card:hover h3 {
+  animation: text-glow 0.6s ease-in-out;
+}
+
+/* Project Card Animations */
+.project-card {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.2);
+}
+
+.project-card:hover svg {
+  animation: project-preview 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover h3 {
+  animation: title-bounce 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover .btn {
+  animation: button-pulse 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover .px-2 {
+  animation: tech-tag-dance 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover .px-2:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.project-card:hover .px-2:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.project-card:hover .px-2:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* Experience Card Animations */
+.experience-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12);
+}
+
+.experience-card:hover .company-logo {
+  animation: company-highlight 0.7s ease-in-out;
+}
+
+.experience-card:hover .role-title {
+  animation: role-emphasis 0.6s ease-in-out;
+}
+
+/* Blog Card Animations */
+.blog-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card:hover .blog-icon {
+  animation: blog-article-bounce 0.6s ease-in-out;
+}
+
+/* Contact Section Animations */
+.contact-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contact-item:hover .contact-icon {
+  animation: contact-method-pulse 0.5s ease-in-out;
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
+
+@keyframes institution-badge {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+}
+
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 0 rgba(14, 165, 233, 0); }
+  50% { text-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
+}
+
+@keyframes project-preview {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); filter: brightness(1.1); }
+}
+
+@keyframes title-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); color: #0ea5e9; }
+}
+
+@keyframes button-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3); }
+}
+
+@keyframes tech-tag-dance {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.05); background-color: rgba(14, 165, 233, 0.1); }
+}
+
+@keyframes company-highlight {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.1); filter: brightness(1.2); }
+}
+
+@keyframes role-emphasis {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes blog-article-bounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+}
+
+@keyframes contact-method-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.8; }
+}
+    </style>
+    <style>
+      :root{
+        --page-max: 72rem;
+        --page-pad: 1rem;
+      }
+      @media (min-width:640px){ :root{ --page-pad: 1.5rem; } }
+      @media (min-width:1024px){ :root{ --page-pad: 2rem; } }
+      .container-fixed{ margin-left:auto; margin-right:auto; max-width:var(--page-max); padding-left:var(--page-pad); padding-right:var(--page-pad); }
+      .section-y{ padding-top: 4rem; padding-bottom: 4rem; }
+      @media (min-width:1024px){ .section-y{ padding-top: 5rem; padding-bottom: 5rem; } }
+    </style>
+
+    <!-- Plausible (privacy-friendly, cookieless) -->
+    <script defer="" data-domain="smit-patel.dev" src="https://plausible.io/js/script.js"></script>
+
+    <!-- JSON-LD: Person + selected projects -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Smit Patel",
+        "jobTitle": "Data Analyst / Data Engineer",
+        "url": "https://smit-patel.dev/",
+        "sameAs": [
+          "https://github.com/Smit-1103",
+          "https://www.linkedin.com/in/smit-patel-34848a210/"
+        ],
+        "knowsAbout": ["SQL", "Python", "Power BI", "AWS", "ETL", "Data Warehousing"],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Independent / Open to opportunities"
+        },
+        "hasPart": [
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "Recruitment Analytics Platform",
+            "programmingLanguage": ["Python", "SQL"],
+            "codeRepository": "https://github.com/S-1103"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "Reporting Automation Pipeline",
+            "programmingLanguage": ["Python"],
+            "codeRepository": "https://github.com/Smit-1103"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "License Optimization Analyzer",
+            "programmingLanguage": ["Python"],
+            "codeRepository": "https://github.com/Smit-1103"
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body class="bg-white text-neutral-900 selection:bg-neutral-300 antialiased min-h-screen scroll-smooth" style="--accent:#0ea5e9;">
+    <a href="#main" class="sr-only focus:not-sr-only focus-ring px-3 py-2 bg-white text-neutral-900">Skip to content</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:z-50 focus:top-3 focus:left-3 focus:px-3 focus:py-2 focus:rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-neutral-900 bg-neutral-800 text-neutral-100">Skip to content</a>
+
+    <!-- App wrapper -->
+    <div id="app" class="bg-layer relative isolate">
+      <!-- Particle Canvas Background (realistic, live) -->
+      <div class="pointer-events-none fixed inset-0 -z-20">
+        <canvas id="bg-canvas" class="w-full h-full block"></canvas>
+      </div>
+
+      <!-- Subtle masked gradient background -->
+      <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10" style="
+          background:
+            radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+            radial-gradient(900px 500px at -10% 20%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+            linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0));
+          mask-image: radial-gradient(1200px 600px at 80% -10%, rgba(0,0,0,.55), transparent 70%),
+                       radial-gradient(900px 500px at -10% 20%, rgba(0,0,0,.45), transparent 75%);
+          mask-composite: exclude;
+          opacity: .8;
+        "></div>
+
+      <!-- Header -->
+      <header class="glass-nav sticky top-0 z-50" role="banner">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="h-16 flex items-center justify-between">
+            <a href="" class="inline-flex items-center gap-2 rounded-md px-1 py-1 logo-sp focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900" aria-label="Homepage">
+              <div class="text-lg font-semibold tracking-tight leading-none" style="letter-spacing: -0.02em;">
+                <span class="logo-badge px-2 py-1 rounded-md ring-1 ring-neutral-300 bg-neutral-100 transition-all duration-400">SP</span>
+                <span class="sr-only">Smit Patel</span>
+              </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Primary">
+              <a href="#education" class="text-neutral-700 nav-education transition-colors">Education</a>
+              <a href="#projects" class="text-neutral-700 nav-projects transition-colors">Projects</a>
+              <a href="#experience" class="text-neutral-700 nav-experience transition-colors">Experience</a>
+              <a href="#blog" class="text-neutral-700 nav-blog transition-colors">Blog</a>
+              <a href="#contact" class="text-neutral-700 nav-contact transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-1">
+              <a href="https://github.com/Smit-1103" target="_blank" rel="noopener noreferrer" class="btn btn-ghost social-github" aria-label="GitHub profile">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/smit-patel-34848a210/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost social-linkedin" aria-label="LinkedIn profile">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </a>
+              <a href="mailto:smitpatel7032@gmail.com" class="btn btn-ghost social-mail" aria-label="Email">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </a>
+              <button id="menu-btn" class="md:hidden ml-1 p-2 rounded-md hover:bg-neutral-100 ring-1 ring-transparent hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="md:hidden hidden border-t border-neutral-200">
+          <div class="px-4 pb-4 pt-2 space-y-1">
+            <a href="#education" class="block px-3 py-2 rounded-md text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 ring-1 ring-transparent hover:ring-neutral-300">Education</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 ring-1 ring-transparent hover:ring-neutral-300">Projects</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 ring-1 ring-transparent hover:ring-neutral-300">Experience</a>
+            <a href="#blog" class="block px-3 py-2 rounded-md text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 ring-1 ring-transparent hover:ring-neutral-300">Blog</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 ring-1 ring-transparent hover:ring-neutral-300">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" class="relative">
+        <!-- Hero -->
+        <section id="intro" class="container-fixed section-y relative">
+          <div class="layer-content">
+            <!-- 12-col hero grid -->
+            <div class="grid lg:grid-cols-12 gap-6 xl:gap-8 items-start">
+            <!-- LEFT: name, summary, CTAs -->
+            <div class="lg:col-span-7">
+              <p class="text-sm text-neutral-400 mb-3">Open to Data roles</p>
+              <header class="flex items-center gap-4">
+                <span class="avatar-glass relative">
+                  <!-- Animated neon halo around avatar -->
+                  <span class="neon-halo" style="position:absolute; left:-15%; top:-15%; width:130%; height:130%; pointer-events:none; z-index:-1; border-radius:50%; background: conic-gradient(from 0deg, rgba(99, 102, 241, 0.4), rgba(34, 211, 238, 0.4), rgba(244, 114, 182, 0.4), rgba(251, 191, 36, 0.4), rgba(99, 102, 241, 0.4)); filter: blur(20px); animation: neon-rotate 8s linear infinite;"></span>
+                  <!-- Inner glow ring -->
+                  <span class="inner-glow" style="position:absolute; left:-8%; top:-8%; width:116%; height:116%; pointer-events:none; z-index:-1; border-radius:50%; background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%); filter: blur(15px); animation: pulse-glow 4s ease-in-out infinite alternate;"></span>
+                  <img src="./assets/img/smit.jpg" alt="Smit Patel headshot" width="104" height="104" class="avatar" loading="eager" fetchpriority="high">
+                </span>
+                <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.1]" style="letter-spacing: -0.02em;">
+                  Smit Patel
+                </h1>
+              </header>
+              <p id="summary" class="mt-2 text-neutral-700 leading-relaxed max-w-prose lg:mt-2">
+                Data Analyst & Data Engineer. I design reliable data pipelines, APIs, and dashboards that reduce cycle times and cost. Comfortable across Python, SQL, JavaScript, React, Node.js, Power BI, and AWS. I enjoy turning ambiguous problems into measurable wins.
+              </p>
+              <div class="mt-7 flex flex-wrap items-center gap-3">
+                <a href="#projects" class="btn btn-primary glass-accent" aria-label="View Projects">
+                  <i data-lucide="rocket" class="w-4 h-4"></i>
+                  View Projects
+                </a>
+                <a href="./resume.pdf" download class="btn btn-outline" aria-label="Download Resume PDF">
+                  <i data-lucide="download" class="w-4 h-4"></i>
+                  Download Resume
+                </a>
+              </div>
+            </div>
+
+            <!-- RIGHT: stacked mini-cards (sticky on large) -->
+            <aside class="lg:col-span-5">
+              <div class="lg:sticky lg:top-28 space-y-3 relative">
+                <!-- Data Engineering chip - diagonal up-right on hover + gentle float -->
+                <article class="glass-card p-4 group cursor-pointer flex items-center gap-3 ml-0 transition-all duration-400 ease-out hover:-translate-y-6 hover:translate-x-2 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 chip-float-1" style="transform: translateX(0px);">
+                  <div class="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center text-white shadow-lg group-hover:shadow-blue-500/40 transition-all duration-400">
+                    <i data-lucide="database" class="w-6 h-6 group-hover:scale-110 transition-transform duration-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-semibold text-sm text-neutral-900 group-hover:text-blue-700 transition-colors duration-400">Data Engineering</h3>
+                    <p class="text-xs text-neutral-600 group-hover:text-neutral-800 transition-colors duration-400">Python • SQL • ETL</p>
+                  </div>
+                  <span class="metric-pill text-xs bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full font-medium group-hover:bg-blue-200 group-hover:scale-105 transition-all duration-400">
+                    <span class="metric-content">
+                      <span class="metric-front metric-text" data-metrics='["-40% Cycle Time", "$15k/yr Saved", "-60% Data Incidents"]' data-captions='["Automated reimbursements", "License redesign savings", "Data quality framework"]'>-40% Cycle Time</span>
+                      <span class="metric-back">Automated reimbursements</span>
+                    </span>
+                  </span>
+                </article>
+                
+                <!-- Analytics chip - diagonal down-left on hover + reverse float -->
+                <article class="glass-card p-4 group cursor-pointer flex items-center gap-3 ml-6 transition-all duration-400 ease-out hover:translate-y-3 hover:-translate-x-2 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 chip-float-2" style="transform: translateX(24px);">
+                  <div class="w-12 h-12 rounded-xl bg-purple-500 flex items-center justify-center text-white shadow-lg group-hover:shadow-purple-500/40 transition-all duration-400">
+                    <i data-lucide="bar-chart-3" class="w-6 h-6 group-hover:scale-110 transition-transform duration-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-semibold text-sm text-neutral-900 group-hover:text-purple-700 transition-colors duration-400">Analytics</h3>
+                    <p class="text-xs text-neutral-600 group-hover:text-neutral-800 transition-colors duration-400">Power BI • Dashboards</p>
+                  </div>
+                  <span class="metric-pill text-xs bg-purple-100 text-purple-700 px-3 py-1.5 rounded-full font-medium group-hover:bg-purple-200 group-hover:scale-105 transition-all duration-400">
+                    <span class="metric-content">
+                      <span class="metric-front metric-text" data-metrics='["20+ Countries", "+25% Consistency", "3 Depts Self-Serve"]' data-captions='["Campaign coverage", "Governance rules", "KPI scorecards"]'>20+ Countries</span>
+                      <span class="metric-back">Campaign coverage</span>
+                    </span>
+                  </span>
+                </article>
+                
+                <!-- Cloud Platform chip - diagonal up-left on hover + drift float -->
+                <article class="glass-card p-4 group cursor-pointer flex items-center gap-3 ml-3 transition-all duration-400 ease-out hover:-translate-y-4 hover:-translate-x-2 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/20 chip-float-3" style="transform: translateX(12px);">
+                  <div class="w-12 h-12 rounded-xl bg-orange-500 flex items-center justify-center text-white shadow-lg group-hover:shadow-orange-500/40 transition-all duration-400">
+                    <i data-lucide="cloud" class="w-6 h-6 group-hover:scale-110 transition-transform duration-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-semibold text-sm text-neutral-900 group-hover:text-orange-700 transition-colors duration-400">Cloud Platform</h3>
+                    <p class="text-xs text-neutral-600 group-hover:text-neutral-800 transition-colors duration-400">AWS • Scalable Solutions</p>
+                  </div>
+                  <span class="metric-pill text-xs bg-orange-100 text-orange-700 px-3 py-1.5 rounded-full font-medium group-hover:bg-orange-200 group-hover:scale-105 transition-all duration-400 relative" style="transform-style: preserve-3d;">
+                    <span class="metric-content" style="transform-style: preserve-3d;">
+                      <span class="metric-front metric-text" data-metrics='["1.5k+ req/day", "99.9% Uptime", "-65% API Latency"]' data-captions='["Django/FastAPI microservices handling", "Production reliability achievement", "Monolith → GDPR microservices optimization"]'>1.5k+ req/day</span>
+                      <span class="metric-back">Django/FastAPI microservices handling</span>
+                    </span>
+                  </span>
+                </article>
+              </div>
+            </aside>
+          </div>
+
+          <!-- IMPACT BLOCK under hero, full width aligned to same grid edges -->
+          <div class="mt-8 grid grid-cols-12 gap-6">
+            <!-- Essential Recruiter Signals: full width -->
+            <section class="col-span-12 glass-card signal-card p-5" id="signals">
+              <h3 class="text-lg font-semibold mb-3">Essential Recruiter Signals</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-neutral-700">
+                <div class="signal-item">- <strong>Impact:</strong> cost savings, latency/throughput wins, incident ownership</div>
+                <div class="signal-item">- <strong>Reliability:</strong> tests, CI/CD, monitoring, rollbacks</div>
+                <div class="signal-item">- <strong>Data quality:</strong> validation, schema governance, SLAs</div>
+                <div class="signal-item">- <strong>Architecture:</strong> modular design, API contracts, versioning</div>
+                <div class="signal-item">- <strong>Communication:</strong> stakeholder updates and docs</div>
+              </div>
+            </section>
+
+            <!-- KPIs row: full width, 3 tiles -->
+            <div class="col-span-12 grid sm:grid-cols-3 gap-6" id="kpis">
+              <div class="glass-card kpi-card p-4 hover:-translate-y-0.5 transition-transform">
+                <p class="kpi-label text-sm text-neutral-600">Reliability</p>
+                <p class="kpi-value mt-1 text-2xl font-semibold tracking-tight">99.9% uptime</p>
+              </div>
+              <div class="glass-card kpi-card p-4 hover:-translate-y-0.5 transition-transform">
+                <p class="kpi-label text-sm text-neutral-600">Scale</p>
+                <p class="kpi-value mt-1 text-2xl font-semibold tracking-tight">1.5k+ req/day</p>
+              </div>
+              <div class="glass-card kpi-card p-4 hover:-translate-y-0.5 transition-transform">
+                <p class="kpi-label text-sm text-neutral-600">Delivery</p>
+                <p class="kpi-value mt-1 text-2xl font-semibold tracking-tight">12+ dashboards</p>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <!-- Core Skills (horizontal section) -->
+        <section id="skills" class="container-fixed section-y" data-animate="">
+          <div class="glass-card-ultra p-6">
+            <div class="flex items-baseline justify-between gap-3">
+              <h2 class="text-xl font-semibold tracking-tight">Core Skills</h2>
+              <span class="text-xs text-neutral-500">quick overview</span>
+            </div>
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 text-sm">
+              <div class="skill-category skill-programming">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="code-2" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Programming</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">Python</span>
+                  <span class="chip">TypeScript/JavaScript</span>
+                  <span class="chip">Java</span>
+                  <span class="chip">SQL</span>
+                  <span class="chip">R</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="layout" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Frontend</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">React</span>
+                  <span class="chip">Next.js</span>
+                  <span class="chip">TailwindCSS</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="server" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Backend &amp; APIs</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">Node.js</span>
+                  <span class="chip">FastAPI</span>
+                  <span class="chip">REST</span>
+                  <span class="chip">GraphQL (basic)</span>
+                </div>
+              </div>
+              <div class="skill-category skill-data">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="bar-chart-2" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Data &amp; Analytics</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">Pandas</span>
+                  <span class="chip">NumPy</span>
+                  <span class="chip">scikit-learn</span>
+                  <span class="chip">Power BI</span>
+                  <span class="chip">Tableau</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="cog" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Data Engineering</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">Airflow</span>
+                  <span class="chip">dbt (basic)</span>
+                  <span class="chip">Kafka</span>
+                  <span class="chip">Spark</span>
+                  <span class="chip">Delta Lake</span>
+                </div>
+              </div>
+              <div class="skill-category skill-cloud">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="cloud" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Cloud &amp; DevOps</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">AWS (S3, Lambda, EC2, IAM, CloudWatch)</span>
+                  <span class="chip">Docker</span>
+                  <span class="chip">Kubernetes</span>
+                  <span class="chip">GitHub Actions</span>
+                  <span class="chip">Terraform (basic)</span>
+                </div>
+              </div>
+              <div class="skill-category skill-database">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="database" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Databases &amp; Storage</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">PostgreSQL</span>
+                  <span class="chip">MySQL</span>
+                  <span class="chip">MongoDB</span>
+                  <span class="chip">Redis</span>
+                  <span class="chip">DynamoDB</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="activity" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Quality &amp; Observability</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">Jest</span>
+                  <span class="chip">Pytest</span>
+                  <span class="chip">CI/CD</span>
+                  <span class="chip">logging/metrics/tracing</span>
+                </div>
+              </div>
+              <div class="skill-category skill-security">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="shield" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Security &amp; Privacy</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">OAuth2/JWT</span>
+                  <span class="chip">secrets management</span>
+                  <span class="chip">least privilege</span>
+                  <span class="chip">PII handling</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <p class="text-sm text-neutral-600 mb-2"><i data-lucide="users" class="skill-icon w-4 h-4 mr-1.5 inline-block align-middle text-neutral-500" aria-hidden="true"></i> Collaboration</p>
+                <div class="skill-chips flex flex-wrap gap-2">
+                  <span class="chip">Git</span>
+                  <span class="chip">Jira</span>
+                  <span class="chip">Confluence</span>
+                  <span class="chip">Agile/Scrum</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      
+
+        <!-- Education -->
+        <section id="education" class="container-fixed section-y border-t border-neutral-200" data-animate="">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Education</h2>
+            <div class="mt-8 grid md:grid-cols-2 gap-4">
+              <article class="glass-card glass-glow glow-cyan p-6 flex items-center gap-4 min-h-32 experience-card" style="--gx:85%; --gy:25%;">
+
+                <img src="./assets/img/UWIN.png" alt="University of Windsor logo" width="112" height="112" class="rounded-md ring-1 ring-neutral-200 bg-white p-1 shadow-sm company-logo" loading="lazy">
+                <div>
+                  <h3 class="text-xl font-semibold tracking-tight role-title">Master of Applied Computing, University of Windsor</h3>
+                  <p class="mt-1 text-base text-neutral-700">May 2024 – Dec 2025 — Current average 88.4%.</p>
+                </div>
+              </article>
+              <article class="glass-card p-6 flex items-center gap-4 min-h-32 experience-card">
+                <img src="./assets/img/GTU.jpeg" alt="Gujarat Technological University logo" width="112" height="112" class="rounded-md ring-1 ring-neutral-200 bg-white p-1 shadow-sm company-logo" loading="lazy">
+                <div>
+                  <h3 class="text-xl font-semibold tracking-tight role-title">B.E. Computer Science, Gujarat Technological University</h3>
+                  <p class="mt-1 text-base text-neutral-700">Jul 2019 – May 2023 — Current average 87.5%.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="container-fixed section-y border-t border-neutral-200" data-animate="">
+          <div>
+            <div class="flex items-center justify-between gap-4">
+              <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Projects</h2>
+              <a href="https://github.com/Smit-1103"
+                class="btn btn-outline"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="Open GitHub profile">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                  All Projects
+              </a>
+            </div>
+
+            <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- 4 Valorant Stats Tracker —  RN + AWS (Private) -->
+              <article class="group glass-card p-5 hover:-translate-y-0.5 motion-reduce:transform-none transition-transform flex flex-col project-card">
+                <div class="aspect-[16/9] rounded-lg mb-4 overflow-hidden ring-1 ring-neutral-800/60">
+                  <svg viewBox="0 0 800 450" class="w-full h-full block">
+                    <defs><linearGradient id="p4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(168,85,247,0.18)"></stop><stop offset="1" stop-color="rgba(59,130,246,0.10)"></stop></linearGradient></defs>
+                    <rect width="800" height="450" fill="url(#p4)"></rect>
+                    <g fill="none" stroke="rgba(15,23,42,0.10)" stroke-width="2"><path d="M0,420 C220,320 500,520 800,360"></path></g>
+                    <text x="40" y="70" font-family="Inter, system-ui" font-size="22" fill="rgba(15,23,42,.9)" style="font-weight:600; letter-spacing:-0.02em;">Valorant Stats Tracker</text>
+                    <text x="40" y="102" font-family="Inter, system-ui" font-size="14" fill="rgba(15,23,42,.7)">React Native + AWS (Private)</text>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold tracking-tight">Valorant Stats Tracker — RN + AWS (Private)</h3>
+                <p class="mt-1 text-sm text-neutral-700">Cross-platform app (iOS/Android) with real-time player insights; authorized <strong>Riot Games API</strong> access.</p>
+                <ul class="mt-2 text-sm text-neutral-700 space-y-1 list-disc pl-5">
+                  <li>RN + TypeScript UI; agent/map/weapon analytics & interactive dashboards.</li>
+                  <li>Backend: <strong>AWS Amplify</strong> (auth/sync), <strong>DynamoDB</strong>, <strong>Lambda</strong>, <strong>Kafka</strong> streaming.</li>
+                  <li>Pipeline: batch + caching + real-time updates.</li>
+                  <li><strong>15k+ installs</strong>, <strong>1k+ DAU</strong>, ⭐ <strong>4.5</strong>, <strong>99.9% uptime</strong>, ~<strong>1.8s</strong> avg response.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">React Native</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">TypeScript</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Riot Games API</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">AWS Amplify</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">DynamoDB</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Lambda</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Kafka</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <a href="https://github.com/Smit-1103/Valorant-Stats-Tracker" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    README
+                  </a>
+                  <br />
+                  <a href="mailto:smitpatel7032@gmail.com?subject=Valorant%20Stats%20Tracker%20Case%20Study" class="btn btn-outline">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    Contact Me
+                  </a>
+                </div>
+              </article>
+              <!-- 1 ByteNode -->
+              <article class="group glass-card glass-glow glow-amber p-5 hover:-translate-y-0.5 motion-reduce:transform-none transition-transform flex flex-col project-card" style="--gx:20%; --gy:80%;">
+                <div class="aspect-[16/9] rounded-lg mb-4 overflow-hidden ring-1 ring-neutral-800/60">
+                  <svg viewBox="0 0 800 450" class="w-full h-full block">
+                    <defs><linearGradient id="p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(14,165,233,0.15)"></stop><stop offset="1" stop-color="rgba(14,165,233,0.05)"></stop></linearGradient></defs>
+                    <rect width="800" height="450" fill="url(#p1)"></rect>
+                    <g fill="none" stroke="rgba(15,23,42,0.12)" stroke-width="2"><path d="M0,360 C260,320 520,420 800,360"></path><path d="M0,240 C250,220 470,300 800,280"></path></g>
+                    <text x="40" y="70" font-family="Inter, system-ui" font-size="22" fill="rgba(15,23,42,.9)" style="font-weight:600; letter-spacing:-0.02em;">ByteNode — IPFS Storage</text>
+                    <text x="40" y="102" font-family="Inter, system-ui" font-size="14" fill="rgba(15,23,42,.7)">Distributed System</text>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold tracking-tight">ByteNode — IPFS Distributed Storage System</h3>
+                <p class="mt-1 text-sm text-neutral-700">
+                  <strong>Django</strong>-based storage that chunks files, stores redundant copies across <strong>IPFS</strong> nodes, and
+                  <strong>self-heals</strong> with <strong>health checks</strong> and <strong>auto-rebalancing</strong>.
+                </p>
+                <ul class="mt-2 text-sm text-neutral-700 space-y-1 list-disc pl-5">
+                  <li>Secure <strong>auth</strong> + role-based access; <strong>REST API</strong> & <strong>admin dashboard</strong>.</li>
+                  <li><strong>1MB</strong> intelligent <strong>chunking</strong>; multi-node <strong>redundancy</strong> & <strong>fault tolerance</strong>.</li>
+                  <li><code>check_system_health</code> detects/repairs missing chunks; <strong>automatic rebalancing</strong>.</li>
+                  <li><strong>Monitoring</strong> & <strong>self-healing</strong> with scheduled <strong>integrity checks</strong>.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Django</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">IPFS</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">PostgreSQL</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">REST</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Chunking</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Redundancy</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Self-Healing</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <a href="https://github.com/Smit-1103/ByteNode" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    Repo
+                  </a>
+                </div>
+              </article>
+
+              <!-- 2 SkillXChange -->
+              <article class="group glass-card p-5 hover:-translate-y-0.5 motion-reduce:transform-none transition-transform flex flex-col project-card">
+                <div class="aspect-[16/9] rounded-lg mb-4 overflow-hidden ring-1 ring-neutral-800/60">
+                  <svg viewBox="0 0 800 450" class="w-full h-full block">
+                    <defs><linearGradient id="p2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(14,165,233,0.15)"></stop><stop offset="1" stop-color="rgba(14,165,233,0.05)"></stop></linearGradient></defs>
+                    <rect width="800" height="450" fill="url(#p2)"></rect>
+                    <g fill="none" stroke="rgba(15,23,42,0.12)" stroke-width="2"><path d="M0,420 C240,360 480,460 800,380"></path><path d="M0,300 C250,260 470,340 800,280"></path></g>
+                    <text x="40" y="70" font-family="Inter, system-ui" font-size="22" fill="rgba(15,23,42,.9)" style="font-weight:600; letter-spacing:-0.02em;">SkillXChange</text>
+                    <text x="40" y="102" font-family="Inter, system-ui" font-size="14" fill="rgba(15,23,42,.7)">Peer-to-Peer Learning</text>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold tracking-tight">SkillXChange — Peer-to-Peer Learning</h3>
+                <p class="mt-1 text-sm text-neutral-700">
+                  <strong>Credit-based</strong> learning platform with <strong>secure auth</strong>, rich <strong>profiles</strong>,
+                  <strong> networking</strong>, chat, and <strong>ZEGOCLOUD</strong> video for live sessions.
+                </p>
+                <ul class="mt-2 text-sm text-neutral-700 space-y-1 list-disc pl-5">
+                  <li>Earn/spend <strong>credits</strong> for lessons; inclusive, <strong>non-monetary</strong> model.</li>
+                  <li><strong>Profiles</strong>, <strong>ratings</strong>, and skill promotion; LinkedIn-style <strong>networking</strong>.</li>
+                  <li><strong>Real-time chat</strong> + <strong>ZEGOCLOUD</strong> video; <strong>advanced search</strong> by skill, location, reviews.</li>
+                  <li>Aligned with <strong>UN SDG-4</strong>: <strong>equitable access</strong> & <strong>lifelong learning</strong>.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Django</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">PostgreSQL</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">REST</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Auth</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">jQuery</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">ZEGOCLOUD</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Search</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <a href="https://github.com/Smit-1103/SkillXChange" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    Repo
+                  </a>
+                </div>
+              </article>
+
+              <!-- 3 Fraud Detection -->
+              <article class="group glass-card p-5 hover:-translate-y-0.5 motion-reduce:transform-none transition-transform flex flex-col project-card">
+                <div class="aspect-[16/9] rounded-lg mb-4 overflow-hidden ring-1 ring-neutral-800/60">
+                  <svg viewBox="0 0 800 450" class="w-full h-full block">
+                    <defs><linearGradient id="p3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(14,165,233,0.15)"></stop><stop offset="1" stop-color="rgba(14,165,233,0.05)"></stop></linearGradient></defs>
+                    <rect width="800" height="450" fill="url(#p3)"></rect>
+                    <g fill="none" stroke="rgba(15,23,42,0.12)" stroke-width="2"><path d="M0,360 C200,360 400,320 800,340"></path><path d="M0,180 C200,180 400,180 800,180"></path></g>
+                    <text x="40" y="70" font-family="Inter, system-ui" font-size="22" fill="rgba(15,23,42,.9)" style="font-weight:600; letter-spacing:-0.02em;">Fraud Detection</text>
+                    <text x="40" y="102" font-family="Inter, system-ui" font-size="14" fill="rgba(15,23,42,.7)">ML Baselines & Ensemble</text>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold tracking-tight">Fraud Detection on BankSim — ML Baselines & Ensemble</h3>
+                <p class="mt-1 text-sm text-neutral-700">
+                  End-to-end <strong>ML pipeline</strong> using <strong>KNN</strong>, <strong>XGBoost</strong>, <strong>RandomForest</strong>, and an
+                  <strong>ensemble</strong>; <strong>SMOTE</strong> variant included for balanced classes and improved recall.
+                </p>
+                <ul class="mt-2 text-sm text-neutral-700 space-y-1 list-disc pl-5">
+                  <li><strong>EDA</strong> + <strong>feature engineering</strong> on synthetic BankSim payments.</li>
+                  <li><strong>Reports</strong> for KNN/XGB/RF + ensemble with <strong>confusion matrices</strong>.</li>
+                  <li><strong>SMOTE</strong> notebook adds <strong>balanced-class</strong> runs with stronger minority <strong>recall</strong>.</li>
+                  <li><strong>Kaggle</strong> reference and <strong>original paper</strong> cited in repo.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Python</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Pandas</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">scikit-learn</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">XGBoost</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">KNN</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">RandomForest</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">SMOTE</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Jupyter</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <a href="https://github.com/Smit-1103/fraud-detection-on-banksim-data-master" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    Repo
+                  </a>
+                </div>
+              </article>
+
+              
+
+              <!-- 5 Car Rental Intelligence — Advanced DSA in Java -->
+              <article class="group glass-card glass-glow glow-pink p-5 hover:-translate-y-0.5 motion-reduce:transform-none transition-transform flex flex-col project-card" style="--gx:75%; --gy:15%;">
+                <div class="aspect-[16/9] rounded-lg mb-4 overflow-hidden ring-1 ring-neutral-800/60">
+                  <svg viewBox="0 0 800 450" class="w-full h-full block">
+                    <defs><linearGradient id="p5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(14,165,233,0.15)"></stop><stop offset="1" stop-color="rgba(14,165,233,0.05)"></stop></linearGradient></defs>
+                    <rect width="800" height="450" fill="url(#p5)"></rect>
+                    <g fill="none" stroke="rgba(15,23,42,0.12)" stroke-width="2"><path d="M0,400 C220,380 500,280 800,300"></path><path d="M0,260 C200,220 500,200 800,240"></path></g>
+                    <text x="40" y="70" font-family="Inter, system-ui" font-size="22" fill="rgba(15,23,42,.9)" style="font-weight:600; letter-spacing:-0.02em;">Car Rental Intelligence</text>
+                    <text x="40" y="102" font-family="Inter, system-ui" font-size="14" fill="rgba(15,23,42,.7)">Advanced DSA in Java</text>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold tracking-tight">Car Rental Intelligence — Advanced DSA in Java</h3>
+                <p class="mt-1 text-sm text-neutral-700">Java application that crawls listings, ranks and filters cars, and powers fast search via advanced data structures and algorithms.</p>
+                <ul class="mt-2 text-sm text-neutral-700 space-y-1 list-disc pl-5">
+                  <li>Selenium crawler with popup handling; URL extraction from CSV.</li>
+                  <li>Search frequency with <strong>AVL/Red-Black trees</strong>; <strong>Inverted Index</strong> for fast lookup.</li>
+                  <li>Spell-checker: <strong>Cuckoo Hash</strong>, <strong>Edit Distance</strong>, <strong>Merge Sort</strong> for suggestions.</li>
+                  <li>Ranking & filters: <strong>Boyer–Moore</strong> (frequency), <strong>Quick Sort</strong> (ratings desc).</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Java</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Selenium</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">AVL Tree</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Red-Black Tree</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Cuckoo Hash</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Edit Distance</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Boyer–Moore</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Merge Sort</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Quick Sort</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Inverted Index</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <a href="https://github.com/Smit-1103/CarRentalPriceAnalysis" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i data-lucide="github" class="w-4 h-4"></i> Repo</a>
+                </div>
+              </article>
+
+              <!-- 6 Realtime Group Chat — Flutter + Firebase -->
+              <article class="group glass-card p-5 hover:-translate-y-0.5 motion-reduce:transform-none transition-transform flex flex-col project-card">
+                <div class="aspect-[16/9] rounded-lg mb-4 overflow-hidden ring-1 ring-neutral-800/60">
+                  <svg viewBox="0 0 800 450" class="w-full h-full block">
+                    <defs><linearGradient id="p6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(16,185,129,0.16)"></stop><stop offset="1" stop-color="rgba(59,130,246,0.10)"></stop></linearGradient></defs>
+                    <rect width="800" height="450" fill="url(#p6)"></rect>
+                    <g fill="none" stroke="rgba(15,23,42,0.12)" stroke-width="2"><path d="M0,420 C200,300 500,500 800,340"></path></g>
+                    <text x="40" y="70" font-family="Inter, system-ui" font-size="22" fill="rgba(15,23,42,.9)" style="font-weight:600; letter-spacing:-0.02em;">Realtime Group Chat</text>
+                    <text x="40" y="102" font-family="Inter, system-ui" font-size="14" fill="rgba(15,23,42,.7)">Flutter + Firebase</text>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold tracking-tight">Realtime Group Chat — Flutter + Firebase</h3>
+                <p class="mt-1 text-sm text-neutral-700">Cross-platform group chat with auth, reactions, media, and real-time updates.</p>
+                <ul class="mt-2 text-sm text-neutral-700 space-y-1 list-disc pl-5">
+                  <li>Auth (email/password), profile setup, message reactions (long-press).</li>
+                  <li><strong>Firestore</strong> realtime chat, <strong>Cloud Functions</strong>, <strong>Storage</strong>, <strong>FCM</strong> notifications.</li>
+                  <li>Clean, smooth UI/UX; mobile/web/desktop from one codebase.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Flutter</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Dart</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Firebase Auth</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Firestore</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Cloud Functions</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Storage</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">FCM</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <a href="https://github.com/Smit-1103/chat_app" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i data-lucide="github" class="w-4 h-4"></i> Repo</a>
+                </div>
+              </article>
+            </div>
+            <br>
+              <h5 class="text-xs text-neutral-500"> *Demo videos available in respective project README files.</h5> 
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="container-fixed section-y border-t border-neutral-200" data-animate="">
+  <div>
+    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Experience</h2>
+
+    <ol class="mt-8 relative">
+
+      <!-- University of Windsor -->
+      <li class="relative">
+        <div class="glass-card glass-glow glow-lime p-5 experience-card" style="--gx:15%; --gy:60%;">
+          <div class="flex items-center gap-4">
+            <img src="./assets/logos/company1.png" alt="University of Windsor logo" width="112" height="112"
+                 class="rounded-md ring-1 ring-neutral-200 bg-white shadow-sm object-contain company-logo"
+                 loading="lazy" style="aspect-ratio: 4/3;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h3 class="text-lg font-semibold tracking-tight role-title">
+                    Data Analyst Intern — University of Windsor (May 2025 – Present)
+                  </h3>
+                  
+                </div>
+                <div class="text-sm text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Python</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Power BI</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">SQL</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">AWS (S3/Lambda/CloudWatch)</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Data Visualization</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Workflow Automation</span>
+
+                </div>
+                <p class="text-sm text-neutral-600">
+                    Campaign analytics in <strong>20+ countries</strong>; automated reimbursements, cost controls, and KPI ROI visibility.
+                  </p>
+              </div>
+            </div>
+          </div>
+
+          <ul class="mt-3 space-y-2 text-sm text-neutral-800">
+            <li>- Built an automated reimbursement system, cutting processing time by <strong>~40%</strong> using <strong>SQL + Python</strong>.</li>
+            <li>- Optimized subscription/licensing, saving <strong>$15k/year</strong> while retaining full functionality.</li>
+            <li>- Delivered self-serve KPI scorecards and <strong>Power BI</strong> dashboards for campaign, travel, and recruiter performance.</li>
+            <li>- Applied governance/validation rules across multi-regional datasets, improving reporting consistency by <strong>~25%</strong>.</li>
+            <li>- Designed a data-quality framework with anomaly checks, reducing BI data failures by <strong>~60%</strong>.</li>
+            <li>- “Light AWS”: <strong>S3 + Lambda + CloudWatch</strong> for scheduled jobs, alerts, and monitoring.</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- BarodaWeb -->
+      <li class="relative mt-6">
+        <div class="glass-card p-5 experience-card">
+          <div class="flex items-center gap-4">
+            <img src="./assets/logos/company2.png" alt="BarodaWeb logo" width="112" height="112"
+                 class="rounded-lg ring-1 ring-neutral-200 bg-white p-1 shadow-sm object-contain company-logo"
+                 loading="lazy" style="aspect-ratio: 4/3;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h3 class="text-lg font-semibold tracking-tight role-title">
+                    Full Stack Developer / QA Automation — BarodaWeb (Jan 2023 – Apr 2024)
+                  </h3>
+                  
+                </div>
+                <div class="text-sm text-neutral-700">
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Kotlin</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Flutter</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">React</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Django</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">FastAPI</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">Docker</span>
+                  <span class="px-2 py-1 rounded-md border border-neutral-200">GitHub Actions</span>
+                </div>
+                <p class="text-sm text-neutral-600">
+                    Mobile + microservices delivery (<strong>1.5k+ req/day</strong>, <strong>99.9% uptime</strong>), AI extension, and CI/CD.
+                  </p>
+              </div>
+            </div>
+          </div>
+
+          <ul class="mt-3 space-y-2 text-sm text-neutral-800">
+            <li>- Shipped production mobile features in <strong>Kotlin/Jetpack Compose</strong> &amp; <strong>Flutter</strong>, improving startup by <strong>~20%</strong> and achieving <strong>99.5%</strong> crash-free sessions.</li>
+            <li>- Adopted <strong>MVVM + Clean Architecture</strong> with <strong>Hilt</strong> DI to scale feature delivery.</li>
+            <li>- Built microservices in <strong>Django + FastAPI</strong> handling <strong>1,500+ daily requests</strong> at <strong>99.9% uptime</strong>; added <strong>JWT</strong> + <strong>RBAC</strong> for <strong>500+ users</strong>.</li>
+            <li>- Migrated a legacy monolith to GDPR-compliant services, cutting API response time by <strong>~65%</strong>.</li>
+            <li>- Integrated REST via <strong>Retrofit</strong> with offline caching (<strong>Room/DataStore</strong>) and robust error handling.</li>
+            <li>- Built an AI-powered Chrome extension (<strong>React + Python NLP</strong>) for JD analysis, adopted by <strong>200+ recruiters</strong>.</li>
+            <li>- Automated <strong>CI/CD</strong> with <strong>GitHub Actions</strong>, Dockerized deployments on <strong>Linode</strong>, and feature flags for safe releases.</li>
+          </ul>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+        <!-- Blog -->
+        <section id="blog" class="container-fixed section-y border-t border-neutral-200" data-animate="">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl sm:3xl font-semibold tracking-tight">Blog</h2>
+            <a href="https://medium.com/@smitpatel7032"
+               target="_blank" rel="noopener noreferrer"
+               class="text-sm text-neutral-600 hover:underline flex items-center gap-1">
+              More on Medium
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        
+          <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Live post -->
+            <article class="glass-card p-5 hover:-translate-y-0.5 transition-transform blog-card">
+              <h3 class="text-lg font-semibold tracking-tight">
+                <a href="https://medium.com/@smitpatel7032/the-double-edged-sword-of-machine-learning-securing-the-future-or-inviting-peril-c2c5517daf51"
+                   target="_blank" rel="noopener noreferrer" class="hover:underline">
+                  The Double-Edged Sword of Machine Learning
+                </a>
+              </h3>
+              <p class="mt-2 text-sm text-neutral-700">
+                Benefits vs misuse of ML with notes on safety, governance, and risk management.
+              </p>
+              <div class="mt-3 flex items-center gap-3 text-xs text-neutral-500">
+                <span class="chip blog-icon">Medium</span><span>~7 min read</span>
+              </div>
+              <div class="mt-4">
+                <a href="https://medium.com/@smitpatel7032/the-double-edged-sword-of-machine-learning-securing-the-future-or-inviting-peril-c2c5517daf51"
+                   target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="Read on Medium">
+                  <i data-lucide="external-link" class="w-4 h-4"></i>
+                  Read on Medium
+                </a>
+              </div>
+            </article>
+        
+            <!-- Coming soon -->
+            <article class="glass-card p-5 hover:-translate-y-0.5 transition-transform blog-card">
+              <h3 class="text-lg font-semibold tracking-tight">More case studies coming soon</h3>
+              <p class="mt-2 text-sm text-neutral-700">
+                ETL with Airflow/dbt, FastAPI microservice, and a Docker/K8s deploy write-up.
+              </p>
+              <div class="mt-3 flex items-center gap-3 text-xs text-neutral-500">
+                <span class="chip blog-icon">Coming Soon</span>
+              </div>
+              <div class="mt-4">
+                <button class="btn btn-outline pointer-events-none opacity-50" disabled aria-label="Coming Soon">
+                  Coming Soon
+                </button>
+              </div>
+            </article>
+          </div>
+        </section>
+        
+
+        <!-- Contact -->
+        <section id="contact" class="container-fixed section-y border-t border-neutral-200" data-animate="">
+          <div class="glass-card glass-glow glow-blue p-8 md:p-12 hover:-translate-y-0.2 transition-transform text-center contact-item">
+            <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">
+              Interested in collaborating or have questions?
+            </h2>
+            <p class="mt-3 text-neutral-700">
+              I’m open to data and data-engineering roles. Quick responses, clear communication.
+            </p>
+        
+            <div class="mt-6 flex items-center justify-center gap-3">
+              <a
+                href="mailto:smitpatel7032@gmail.com?subject=Portfolio%20inquiry&body=Hi%20Smit%2C%20I%27d%20like%20to%20chat%20about..."
+                class="btn btn-primary contact-icon" aria-label="Email Smit Patel">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                Email me
+              </a>
+              <hr>
+              or
+            <hr>
+
+              <a href="https://www.linkedin.com/in/smit-patel-34848a210/"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn-outline contact-icon" aria-label="Open LinkedIn">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                LinkedIn
+              </a>
+              
+            </div>
+          </div>
+        </section>
+        
+
+        <!-- Footer -->
+        <footer class="border-t border-neutral-200 py-10" role="contentinfo">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div>
+                <div class="text-lg font-semibold tracking-tight" style="letter-spacing:-0.02em;">Smit Patel</div>
+                <p class="mt-1 text-sm text-neutral-700">
+                  Grad at @UWindsor | AI | Full Stack | Data | Software Engineer
+                </p>
+              </div>
+              <div class="flex items-center gap-3">
+              <a href="https://github.com/Smit-1103" target="_blank" rel="noopener noreferrer" class="btn btn-ghost social-github" aria-label="GitHub">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/smit-patel-34848a210/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost social-linkedin" aria-label="LinkedIn">
+                  <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="mailto:smitpatel7032@gmail.com" class="btn btn-ghost social-mail" aria-label="Email">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+                
+              </div>
+            </div>
+            <p class="mt-6 text-xs text-neutral-500">
+              © <span id="year"></span> Smit Patel. All rights reserved.
+            </p>
+          </div>
+        </footer>
+      </main>
+
+      
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-dot" style="position:fixed; inset:auto; width:6px; height:6px; border-radius:9999px; background:var(--accent); pointer-events:none; z-index:50; transform:translate(-50%, -50%); mix-blend:screen; opacity:.9;"></div>
+    <div id="cursor-ring" style="position:fixed; inset:auto; width:34px; height:34px; border-radius:9999px; border:1.5px solid color-mix(in srgb, var(--accent) 60%, transparent); pointer-events:none; z-index:50; transform:translate(-50%, -50%); transition:border-color .2s ease, background-color .2s ease; mix-blend:screen;"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Utilities
+      const $ = (s, r = document) => r.querySelector(s);
+      const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+      const lerp = (a, b, t) => a + (b - a) * t;
+
+      // Year
+      $('#year').textContent = new Date().getFullYear();
+
+      // Icon init + Auto-cycle metrics
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          window.lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        }
+        
+        // Auto-cycle metrics for pills with debugging
+        function autoCycleMetrics() {
+          const pills = document.querySelectorAll('.metric-pill .metric-text');
+          console.log('Found metric pills:', pills.length);
+          
+          pills.forEach((pill, index) => {
+            const metricsData = pill.getAttribute('data-metrics');
+            const captionsData = pill.getAttribute('data-captions');
+            
+            if (metricsData && captionsData) {
+              try {
+                const metrics = JSON.parse(metricsData);
+                const captions = JSON.parse(captionsData);
+                console.log(`Pill ${index} metrics:`, metrics);
+                
+                let currentIndex = 0;
+                
+                // Stagger the start time for each pill
+                setTimeout(() => {
+                  console.log(`Starting cycling for pill ${index}`);
+                  setInterval(() => {
+                    currentIndex = (currentIndex + 1) % metrics.length;
+                    console.log(`Pill ${index} cycling to:`, metrics[currentIndex]);
+                    
+                    // Add fade effect during change
+                    pill.classList.add('changing');
+                    pill.textContent = metrics[currentIndex];
+                    
+                    // Update the hover caption
+                    const backElement = pill.closest('.metric-pill').querySelector('.metric-back');
+                    if (backElement) {
+                      backElement.textContent = captions[currentIndex];
+                    }
+                    
+                    // Remove fade effect after animation
+                    setTimeout(() => {
+                      pill.classList.remove('changing');
+                    }, 500);
+                    
+                  }, 4000); // Change every 4 seconds
+                }, index * 1200); // Stagger start by 1.2 seconds per pill
+              } catch (error) {
+                console.error(`Error parsing data for pill ${index}:`, error);
+              }
+            } else {
+              console.log(`Pill ${index} missing data attributes`);
+            }
+          });
+        }
+        
+        // Start auto-cycling with delay
+        setTimeout(() => {
+          autoCycleMetrics();
+        }, 1000);
+      });
+
+      // Theme toggle (fix: remove forced dark default)
+      (function themeInit() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialDark = false; // force light theme
+        document.body.classList.toggle('dark', initialDark);
+        applyThemeAccentMeta();
+        updateThemeIcon(initialDark);
+
+        const btn = $('#theme-toggle');
+        btn?.addEventListener('click', () => {
+          const nowDark = false; // disable toggling to keep light theme
+          document.body.classList.toggle('dark', nowDark);
+          localStorage.setItem('theme', 'light');
+          updateThemeIcon(false);
+          applyThemeAccentMeta();
+          // Repaint background for theme
+          if (bg) { bg.theme = 'light'; }
+        });
+
+        function updateThemeIcon(isDark) {
+          const icon = $('#theme-toggle i');
+          icon?.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+          if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        }
+
+        function applyThemeAccentMeta() {
+          const meta = document.getElementById('meta-theme-color');
+          if (meta) meta.setAttribute('content', getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ea5e9');
+        }
+      })();
+
+      // Mobile menu
+      (function mobileNav() {
+        const btn = $('#menu-btn');
+        const nav = $('#mobile-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', () => {
+          const open = nav.classList.contains('hidden');
+          nav.classList.toggle('hidden', !open);
+          btn.setAttribute('aria-expanded', String(open));
+          btn.querySelector('i')?.setAttribute('data-lucide', open ? 'x' : 'menu');
+          if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        });
+        $$('#mobile-nav a').forEach(a =>
+          a.addEventListener('click', () => {
+            nav.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.querySelector('i')?.setAttribute('data-lucide', 'menu');
+            if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+          })
+        );
+      })();
+
+      // Smooth in-page scroll with header offset
+      (function smoothAnchors() {
+        const header = document.querySelector('header');
+        function scrollToHash(hash) {
+          const id = hash.replace('#', '');
+          const target = document.getElementById(id);
+          if (!target) return;
+          const headerH = header ? header.getBoundingClientRect().height : 0;
+          const y = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+        document.addEventListener('click', (e) => {
+          const a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          const href = a.getAttribute('href') || '';
+          if (href.length > 1) {
+            e.preventDefault();
+            scrollToHash(href);
+            history.pushState(null, '', href);
+          }
+        });
+        // On load with hash
+        if (location.hash) setTimeout(() => scrollToHash(location.hash), 0);
+      })();
+
+      // Accent color from GitHub avatar (fallback to hash if blocked)
+      (async function accentFromAvatar() {
+        const fallback = hashToHsl('Smit-1103');
+        let accent = fallback;
+        try {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.src = 'https://github.com/Smit-1103.png';
+          await img.decode();
+          const c = document.createElement('canvas');
+          c.width = img.naturalWidth; c.height = img.naturalHeight;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          const data = ctx.getImageData(0, 0, c.width, c.height).data;
+          let r=0,g=0,b=0,count=0,step=10;
+          for (let i=0; i<data.length; i+=4*step) { r+=data[i]; g+=data[i+1]; b+=data[i+2]; count++; }
+          r=Math.round(r/count); g=Math.round(g/count); b=Math.round(b/count);
+          const hsl = rgbToHsl(r,g,b);
+          accent = `hsl(${Math.round(hsl.h)}, ${Math.min(70, Math.max(45, Math.round(hsl.s*100)))}%, ${Math.min(58, Math.max(45, Math.round(hsl.l*100)))}%)`;
+        } catch(e) { accent = fallback; }
+        document.body.style.setProperty('--accent', accent);
+        const meta = document.getElementById('meta-theme-color');
+        if (meta) meta.setAttribute('content', accent);
+      })();
+
+      function hashToHsl(str){
+        let h=0;
+        for(let i=0;i<str.length;i++){ h = str.charCodeAt(i) + ((h<<5) - h); }
+        h = Math.abs(h) % 360;
+        return `hsl(${h}, 60%, 52%)`;
+      }
+      function rgbToHsl(r,g,b){
+        r/=255; g/=255; b/=255;
+        const max = Math.max(r,g,b), min = Math.min(r,g,b);
+        let h, s, l = (max + min) / 2;
+        if (max === min) { h = s = 0; } else {
+          const d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        return { h: h * 360, s, l };
+      }
+
+      // Reveal animations for main sections (lightweight, preserves layout)
+      (function reveal() {
+        const els = $$('section[data-animate]');
+        const setInitial = (el) => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(10px)';
+          el.style.transition = 'opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1)';
+          el.style.willChange = 'opacity, transform';
+        };
+        const show = (el, delay = 0) => {
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, delay);
+        };
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              show(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
+        els.forEach((el, i) => { setInitial(el); io.observe(el); });
+      })();
+
+      // Enhanced Particle Background with Interactive Magic
+      const bg = (function particleBG(){
+        const canvas = document.getElementById('bg-canvas');
+        if (!canvas) return null;
+        const ctx = canvas.getContext('2d');
+        let dpr = Math.max(1, window.devicePixelRatio || 1);
+        let w = 0, h = 0, particles = [], pointer = { x: null, y: null, vx: 0, vy: 0 }, theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+        const state = { linkDist: 120, count: 0, tick: 0, waveActive: false, energyBurst: 0, colorShift: 0 };
+        let mouseVelocity = { x: 0, y: 0 };
+        let lastMouse = { x: 0, y: 0 };
+        let clickWaves = [];
+        let energyParticles = [];
+
+        function resize() {
+          dpr = Math.max(1, window.devicePixelRatio || 1);
+          w = canvas.clientWidth; h = canvas.clientHeight;
+          canvas.width = Math.floor(w * dpr);
+          canvas.height = Math.floor(h * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          const density = 0.00015; // slightly more particles for better effects
+          state.count = clamp(Math.floor(w * h * density), 100, 300);
+          if (particles.length === 0) init();
+        }
+
+        function init() {
+          particles = [];
+          for (let i=0; i<state.count; i++) {
+            particles.push({
+              x: Math.random() * w,
+              y: Math.random() * h,
+              vx: (Math.random() - 0.5) * 0.4,
+              vy: (Math.random() - 0.5) * 0.4,
+              r: Math.random() * 1.8 + 0.4,
+              originalR: Math.random() * 1.8 + 0.4,
+              hue: Math.random() * 60, // Color variation
+              energy: 0, // Energy level for special effects
+              type: Math.random() > 0.9 ? 'special' : 'normal' // 10% special particles
+            });
+          }
+        }
+
+        function bgGradient() {
+          const g = ctx.createLinearGradient(0,0,0,h);
+          g.addColorStop(0, '#f7fafc');
+          g.addColorStop(1, '#e8eef5');
+          return g;
+        }
+
+        // Create subtle click wave effect
+        function createClickWave(x, y) {
+          clickWaves.push({
+            x, y,
+            radius: 0,
+            maxRadius: 120,
+            life: 0,
+            maxLife: 45
+          });
+        }
+
+        // Create gentle energy burst particles
+        function createEnergyBurst(x, y, count = 6) {
+          for (let i = 0; i < count; i++) {
+            const angle = (Math.PI * 2 * i) / count;
+            const speed = Math.random() * 1.5 + 0.8;
+            energyParticles.push({
+              x, y,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              life: 20,
+              maxLife: 20,
+              hue: Math.random() * 30,
+              size: Math.random() * 1.5 + 0.5
+            });
+          }
+        }
+
+        function draw() {
+          state.tick++;
+          
+          // Subtle background with gentle color shifts
+          const hueShift = Math.sin(state.tick * 0.0005) * 3;
+          state.colorShift = hueShift;
+          ctx.fillStyle = bgGradient();
+          ctx.fillRect(0,0,w,h);
+
+          // Calculate mouse velocity for subtle effects
+          if (pointer.x !== null && pointer.y !== null) {
+            mouseVelocity.x = pointer.x - lastMouse.x;
+            mouseVelocity.y = pointer.y - lastMouse.y;
+            lastMouse = { x: pointer.x, y: pointer.y };
+          }
+          const mouseSpeed = Math.hypot(mouseVelocity.x, mouseVelocity.y);
+
+          // Subtle colors with minimal hue shifting
+          const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ea5e9';
+          const baseHue = 200 + state.colorShift;
+          const particleColor = `hsl(${baseHue}, 40%, 20%)`;
+          const lineColor = `hsla(${baseHue}, 30%, 30%, 0.08)`;
+
+          // Update click waves
+          clickWaves = clickWaves.filter(wave => {
+            wave.life++;
+            wave.radius = (wave.life / wave.maxLife) * wave.maxRadius;
+            return wave.life < wave.maxLife;
+          });
+
+          // Update energy particles
+          energyParticles = energyParticles.filter(ep => {
+            ep.x += ep.vx;
+            ep.y += ep.vy;
+            ep.vx *= 0.98;
+            ep.vy *= 0.98;
+            ep.life--;
+            return ep.life > 0;
+          });
+
+          // Update + draw particles with enhanced effects
+          for (let i=0; i<particles.length; i++) {
+            const p = particles[i];
+            
+            // Enhanced pointer interaction with mouse velocity
+            if (pointer.x !== null && pointer.y !== null) {
+              const dx = p.x - pointer.x, dy = p.y - pointer.y;
+              const dist2 = dx*dx + dy*dy;
+              const dist = Math.sqrt(dist2);
+              
+              // Gentle pull based on mouse speed
+              const velocityBoost = Math.min(mouseSpeed * 0.01, 0.2);
+              const pull = dist > 0 ? Math.min(0.08 + velocityBoost, 100 / dist2) : 0;
+              p.vx -= dx * pull * 0.003;
+              p.vy -= dy * pull * 0.003;
+
+              // Special particles react subtly
+              if (p.type === 'special' && dist < 80) {
+                p.energy = Math.min(p.energy + 0.03, 0.6);
+                p.r = p.originalR * (1 + p.energy * 0.3);
+                p.hue = (p.hue + 0.1) % 360;
+              } else {
+                p.energy = Math.max(p.energy - 0.01, 0);
+                p.r = lerp(p.r, p.originalR, 0.03);
+              }
+
+              // Gentle wave interaction - particles get lightly pushed by click waves
+              clickWaves.forEach(wave => {
+                const wdx = p.x - wave.x, wdy = p.y - wave.y;
+                const wdist = Math.hypot(wdx, wdy);
+                if (Math.abs(wdist - wave.radius) < 15) {
+                  const force = (15 - Math.abs(wdist - wave.radius)) / 15;
+                  p.vx += (wdx / wdist) * force * 0.1;
+                  p.vy += (wdy / wdist) * force * 0.1;
+                  p.energy = Math.min(p.energy + force * 0.2, 0.5);
+                }
+              });
+            }
+
+            // Movement with enhanced drift
+            p.x += p.vx; p.y += p.vy;
+            p.vx *= 0.994; p.vy *= 0.994;
+            
+            // Organic floating motion with energy influence
+            const energyBoost = p.energy * 0.003;
+            p.vx += Math.cos((i + state.tick * 0.004)) * (0.003 + energyBoost);
+            p.vy += Math.sin((i + state.tick * 0.003)) * (0.003 + energyBoost);
+
+            // wrap around edges
+            if (p.x < -10) p.x = w + 10;
+            if (p.x > w + 10) p.x = -10;
+            if (p.y < -10) p.y = h + 10;
+            if (p.y > h + 10) p.y = -10;
+          }
+
+          // Enhanced connection lines with energy effects
+          for (let i=0; i<particles.length; i++) {
+            for (let j=i+1; j<particles.length; j++) {
+              const a = particles[i], b = particles[j];
+              const dx = a.x - b.x, dy = a.y - b.y;
+              const d = Math.hypot(dx, dy);
+              if (d < state.linkDist) {
+                const opacity = (1 - d / state.linkDist) * 0.6;
+                const energyBoost = (a.energy + b.energy) / 2;
+                
+                // Special energy connections
+                if (energyBoost > 0.3) {
+                  const gradient = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+                  gradient.addColorStop(0, `hsla(${baseHue + a.hue}, 80%, 60%, ${opacity * energyBoost})`);
+                  gradient.addColorStop(1, `hsla(${baseHue + b.hue}, 80%, 60%, ${opacity * energyBoost})`);
+                  ctx.strokeStyle = gradient;
+                  ctx.lineWidth = 1 + energyBoost;
+                } else {
+                  ctx.strokeStyle = lineColor;
+                  ctx.lineWidth = 1;
+                }
+                
+                ctx.globalAlpha = opacity;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.stroke();
+              }
+            }
+          }
+          ctx.globalAlpha = 1;
+
+          // Draw subtle click waves
+          clickWaves.forEach(wave => {
+            const alpha = (1 - (wave.life / wave.maxLife)) * 0.3;
+            ctx.strokeStyle = `hsla(${baseHue}, 40%, 50%, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
+            ctx.stroke();
+          });
+          ctx.globalAlpha = 1;
+
+          // Draw gentle energy particles
+          energyParticles.forEach(ep => {
+            const alpha = (ep.life / ep.maxLife) * 0.4;
+            const hue = baseHue + ep.hue + state.tick * 0.2;
+            ctx.fillStyle = `hsla(${hue}, 50%, 50%, ${alpha})`;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(ep.x, ep.y, ep.size * alpha, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          ctx.globalAlpha = 1;
+
+          // Enhanced particles with energy effects
+          for (let i=0; i<particles.length; i++) {
+            const p = particles[i];
+            
+            if (p.type === 'special' && p.energy > 0.05) {
+              // Special particles get subtle energy glow
+              const hue = baseHue + p.hue + state.tick * 0.1;
+              const glowRadius = p.r * (1.5 + p.energy * 0.5);
+              
+              // Subtle outer glow
+              const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowRadius);
+              gradient.addColorStop(0, `hsla(${hue}, 40%, 50%, ${p.energy * 0.3})`);
+              gradient.addColorStop(1, `hsla(${hue}, 40%, 50%, 0)`);
+              ctx.fillStyle = gradient;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
+              ctx.fill();
+              
+              // Core particle
+              ctx.fillStyle = `hsl(${hue}, 30%, 30%)`;
+            } else {
+              // Regular particles
+              ctx.fillStyle = particleColor;
+            }
+            
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Very subtle energy pulse for particles near cursor
+            if (pointer.x !== null && pointer.y !== null) {
+              const dx = p.x - pointer.x, dy = p.y - pointer.y;
+              const dist = Math.hypot(dx, dy);
+              if (dist < 60) {
+                const pulseIntensity = (60 - dist) / 60;
+                const pulseHue = baseHue + state.tick * 0.1;
+                ctx.fillStyle = `hsla(${pulseHue}, 30%, 40%, ${pulseIntensity * 0.1})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r * (1 + pulseIntensity * 0.2), 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        function onPointer(e) {
+          const x = 'clientX' in e ? e.clientX : (e.touches?.[0]?.clientX ?? 0);
+          const y = 'clientY' in e ? e.clientY : (e.touches?.[0]?.clientY ?? 0);
+          pointer.x = x; pointer.y = y;
+        }
+
+        // Enhanced click interactions
+        function onPointerDown(e) {
+          const x = 'clientX' in e ? e.clientX : (e.touches?.[0]?.clientX ?? 0);
+          const y = 'clientY' in e ? e.clientY : (e.touches?.[0]?.clientY ?? 0);
+          
+          // Create subtle expanding wave effect
+          createClickWave(x, y);
+          
+          // Create gentle energy burst
+          createEnergyBurst(x, y, 6);
+          
+          // Gently energize nearby particles
+          particles.forEach(p => {
+            const dx = p.x - x, dy = p.y - y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 100) {
+              p.energy = Math.min(p.energy + (100 - dist) / 100 * 0.3, 0.5);
+              const force = (100 - dist) / 100 * 0.2;
+              p.vx += (dx / dist) * force;
+              p.vy += (dy / dist) * force;
+            }
+          });
+        }
+
+        // Hover effects over interactive elements
+        function onElementHover(e) {
+          const rect = e.target.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          // Create very subtle energy pulse around hovered elements
+          particles.forEach(p => {
+            const dx = p.x - centerX, dy = p.y - centerY;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 120) {
+              p.energy = Math.min(p.energy + 0.01, 0.3);
+            }
+          });
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', onPointer, { passive: true });
+        window.addEventListener('touchmove', onPointer, { passive: true });
+        window.addEventListener('mousedown', onPointerDown, { passive: true });
+        window.addEventListener('touchstart', onPointerDown, { passive: true });
+        
+        // Add hover effects to interactive elements
+        document.addEventListener('mouseover', (e) => {
+          if (e.target.matches('a, button, .glass-card, .skill-category')) {
+            onElementHover(e);
+          }
+        }, { passive: true });
+
+        resize(); init(); requestAnimationFrame(draw);
+        return { set theme(v){ theme = v; } };
+      })();
+
+      // Custom cursor (dot + ring)
+      (function cursor() {
+        const dot = $('#cursor-dot');
+        const ring = $('#cursor-ring');
+        if (!dot || !ring) return;
+        let x = window.innerWidth / 2, y = window.innerHeight / 2;
+        let rx = x, ry = y; // ring smoothed
+        let rSize = 34;
+        const update = () => {
+          rx = lerp(rx, x, 0.18);
+          ry = lerp(ry, y, 0.18);
+          ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+          dot.style.left = x + 'px'; dot.style.top = y + 'px';
+          requestAnimationFrame(update);
+        };
+        update();
+
+        window.addEventListener('mousemove', (e) => {
+          x = e.clientX; y = e.clientY;
+        }, { passive: true });
+
+        // Hover states on interactive elements
+        const interactors = 'a, button, [role="button"], input, textarea, select, summary, label';
+        document.addEventListener('mouseover', (e) => {
+          const t = e.target.closest(interactors);
+          if (t) {
+            ring.style.borderColor = 'var(--accent)';
+            ring.style.backgroundColor = 'color-mix(in srgb, var(--accent) 10%, transparent)';
+            rSize = 42; ring.style.width = rSize + 'px'; ring.style.height = rSize + 'px';
+          }
+        });
+        document.addEventListener('mouseout', (e) => {
+          const t = e.target.closest(interactors);
+          if (t) {
+            ring.style.borderColor = 'color-mix(in srgb, var(--accent) 60%, transparent)';
+            ring.style.backgroundColor = 'transparent';
+            rSize = 34; ring.style.width = rSize + 'px'; ring.style.height = rSize + 'px';
+          }
+        });
+
+        // Hide cursor during scroll for performance
+        let scrollTO;
+        window.addEventListener('scroll', () => {
+          ring.style.opacity = '.7'; dot.style.opacity = '.7';
+          clearTimeout(scrollTO);
+          scrollTO = setTimeout(() => { ring.style.opacity = '1'; dot.style.opacity = '.9'; }, 120);
+        }, { passive: true });
+      })();
+
+      
+
+      // Ensure external links (GitHub/LinkedIn) are not intercepted and work
+      (function externalLinkSafety(){
+        $$('a[target="_blank"]').forEach(a => {
+          a.addEventListener('click', (e) => {
+            // Allow default; no interception for smooth scroll
+            e.stopPropagation();
+          });
+        });
+      })();
+
+      // Auto-cycling metrics for hero pills
+      (function metricCycling() {
+        const metricElements = document.querySelectorAll('.metric-text');
+        
+        metricElements.forEach((element, index) => {
+          const metrics = JSON.parse(element.dataset.metrics);
+          const captions = JSON.parse(element.dataset.captions);
+          const backElement = element.parentElement.querySelector('.metric-back');
+          
+          let currentIndex = 0;
+          
+          // Start cycling after a staggered delay for each pill
+          setTimeout(() => {
+            setInterval(() => {
+              currentIndex = (currentIndex + 1) % metrics.length;
+              
+              // Add animation class for smooth transition
+              element.classList.add('changing');
+              
+              // Update text content
+              setTimeout(() => {
+                element.textContent = metrics[currentIndex];
+                backElement.textContent = captions[currentIndex];
+                
+                // Remove animation class
+                setTimeout(() => {
+                  element.classList.remove('changing');
+                }, 300);
+              }, 150);
+              
+            }, 4000); // Cycle every 4 seconds
+          }, index * 1000); // Stagger start times by 1 second
+        });
+      })();
+    </script>
+  
+    <!-- Back to top FAB -->
+    <button id="toTop"
+            class="to-top"
+            aria-label="Back to top"
+            title="Back to top">
+      <i data-lucide="arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script>
+      (function(){
+        const btn = document.getElementById('toTop');
+        if(!btn) return;
+
+        // Show button after scrolling N pixels
+        const SHOW_AT = 240;
+        let ticking = false;
+
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            const y = window.scrollY || document.documentElement.scrollTop;
+            btn.classList.toggle('show', y > SHOW_AT);
+            ticking = false;
+          });
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // Click / keyboard
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const toTop = () => {
+          if (prefersReduced) window.scrollTo(0,0);
+          else window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        btn.addEventListener('click', e => { e.preventDefault(); toTop(); });
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toTop(); }
+        });
+
+        // Avoid overlapping the footer
+        const footer = document.querySelector('footer');
+        if (footer && 'IntersectionObserver' in window) {
+          const io = new IntersectionObserver(([entry]) => {
+            btn.classList.toggle('lift', entry.isIntersecting);
+          }, { rootMargin: '0px 0px -10% 0px' });
+          io.observe(footer);
+        }
+
+        // If you use Lucide elsewhere, ensure icons render
+        if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+      })();
+    </script>
+  
+</body></html>
