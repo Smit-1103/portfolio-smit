@@ -847,6 +847,88 @@ html { scroll-behavior: smooth; }
   animation: contact-method-pulse 0.5s ease-in-out;
 }
 
+/* ===== ANIMATED SUMMARY SECTION ===== */
+.animated-summary {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  transform: translateY(10px);
+  text-align: center;
+}
+
+.animated-summary.summary-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-summary:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tech-highlight {
+  position: relative;
+  font-weight: 500;
+  color: #1e40af;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.tech-highlight:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+}
+
+.emphasize {
+  font-weight: 600;
+  color: #374151;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.emphasize:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease-in-out infinite;
+  font-weight: 700;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.shimmer:hover::before {
+  left: 100%;
+}
+
 /* ===== KEYFRAME ANIMATIONS ===== */
 
 @keyframes institution-badge {
@@ -862,6 +944,58 @@ html { scroll-behavior: smooth; }
 @keyframes project-preview {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); filter: brightness(1.1); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive adjustments for animations */
+@media (max-width: 768px) {
+  .summary-word {
+    animation-duration: 0.6s;
+    margin-right: 0.2em;
+  }
+  
+  .summary-word:hover {
+    transform: translateY(-1px) scale(1.03);
+  }
+  
+  .tech-highlight:hover,
+  .emphasize:hover {
+    transform: translateY(-1px) scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .summary-word {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .animated-summary:hover {
+    transform: none;
+  }
+  
+  .summary-word:hover,
+  .tech-highlight:hover,
+  .emphasize:hover {
+    transform: none;
+  }
+  
+  .shimmer::before {
+    display: none;
+  }
+  
+  .gradient-text {
+    animation: none;
+  }
 }
 
 @keyframes title-bounce {
@@ -1047,8 +1181,11 @@ html { scroll-behavior: smooth; }
                   Smit Patel
                 </h1>
               </header>
-              <p id="summary" class="mt-2 text-neutral-700 leading-relaxed max-w-prose lg:mt-2">
-                Data Analyst & Data Engineer. I design reliable data pipelines, APIs, and dashboards that reduce cycle times and cost. Comfortable across Python, SQL, JavaScript, React, Node.js, Power BI, and AWS. I enjoy turning ambiguous problems into measurable wins.
+              <p id="summary" class="mt-2 text-neutral-700 leading-relaxed max-w-prose lg:mt-2 animated-summary mx-auto text-center lg:mx-0 lg:text-left summary-visible">
+                Data Analyst & Data <span class="tech-highlight">Engineer.</span> I design <span class="emphasize">reliable</span> data pipelines, <span class="tech-highlight">APIs,</span> and
+                dashboards that <span class="emphasize">reduce</span> cycle times and <span class="emphasize">cost.</span> Comfortable across <span class="tech-highlight">Python,</span>
+                <span class="tech-highlight">SQL,</span> <span class="tech-highlight">JavaScript,</span> <span class="tech-highlight">React,</span> <span class="tech-highlight">Node.js,</span> <span class="tech-highlight">Power BI,</span> and <span class="tech-highlight">AWS.</span> I enjoy turning
+                ambiguous problems into <span class="emphasize">measurable</span> wins.
               </p>
               <div class="mt-7 flex flex-wrap items-center gap-3">
                 <a href="#projects" class="btn btn-primary glass-accent" aria-label="View Projects">
@@ -1721,9 +1858,9 @@ html { scroll-behavior: smooth; }
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <div>
-                <div class="text-lg font-semibold tracking-tight" style="letter-spacing:-0.02em;">Smit Patel</div>
-                <p class="mt-1 text-sm text-neutral-700">
-                  Grad at @UWindsor | AI | Full Stack | Data | Software Engineer
+                <div class="text-lg font-semibold tracking-tight footer-name" style="letter-spacing:-0.02em;"> <span class="tech-highlight">Smit Patel</span></div>
+                <p class="mt-1 text-sm text-neutral-700 footer-description">
+                  <span class="emphasize">Data Analytics</span> & <span class="emphasize">Automation Engineer</span><span class="tech-highlight"> @University of Windsor</span> | Delivering <span class="emphasize">Data-Driven Insights</span> and <span class="emphasize">Automation</span>
                 </p>
               </div>
               <div class="flex items-center gap-3">
@@ -1825,6 +1962,34 @@ html { scroll-behavior: smooth; }
         setTimeout(() => {
           autoCycleMetrics();
         }, 1000);
+        
+        // Initialize animated summary
+        function initAnimatedSummary() {
+          const summaryElement = document.querySelector('.animated-summary');
+          if (summaryElement) {
+            // Add intersection observer for entrance animation
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('summary-visible');
+                  // Trigger word animations
+                  const words = entry.target.querySelectorAll('.summary-word');
+                  words.forEach((word, index) => {
+                    word.style.animationDelay = `${index * 0.05}s`;
+                  });
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.3 });
+            
+            observer.observe(summaryElement);
+          }
+        }
+        
+        // Initialize summary animation with slight delay
+        setTimeout(() => {
+          initAnimatedSummary();
+        }, 500);
       });
 
       // Theme toggle (fix: remove forced dark default)
